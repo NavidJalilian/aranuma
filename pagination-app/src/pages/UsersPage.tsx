@@ -82,19 +82,7 @@ export default function PaginationPage() {
           page={currentPage}
         />
       </Stack>
-      <Stack
-        mt={3}
-        direction="row"
-        justifyContent="space-around"
-        alignContent="center"
-      >
-        <Pagination
-          shape="rounded"
-          onChange={currentPageHandler}
-          count={totalPages}
-          page={currentPage}
-        />
-      </Stack>
+    
       <Stack
         mt={3}
         direction="row"
