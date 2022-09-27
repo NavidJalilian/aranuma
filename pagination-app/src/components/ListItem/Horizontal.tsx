@@ -16,7 +16,6 @@ export default function HorizontalListItem({
   first_name = "",
   last_name = "",
 }: UserDataType) {
-  const { status } = useUserStatusContext();
   return (
     <Card
       className="fixed-flex-baises"
