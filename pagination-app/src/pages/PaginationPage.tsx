@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 // @ts-ignore
 
-import UsersList from "../components/Lists/Controled";
+import ControledList from "../components/Lists/Controled";
 import {
   UserDataType,
   UserStatusType,
@@ -97,7 +97,7 @@ export default function PaginationPage() {
 
       {perferedLayout === PerferedLayoutType.VERRTICAL &&
       status !== UserStatusType.ERROR ? (
-        <UsersList
+        <ControledList
           data={usersData}
           step={perPageCount}
           listItem={VerticalListItem}
@@ -105,7 +105,7 @@ export default function PaginationPage() {
         />
       ) : (
         status !== UserStatusType.ERROR && (
-          <UsersList
+          <ControledList
             data={usersData}
             step={perPageCount}
             perPageCount={perPageCount}
