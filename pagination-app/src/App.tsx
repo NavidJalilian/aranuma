@@ -1,4 +1,3 @@
-import React from "react";
 import UserStatusProvider from "./contexts/UserStatusContext";
 import UsersPage from "./pages/UsersPage";
 function App() {

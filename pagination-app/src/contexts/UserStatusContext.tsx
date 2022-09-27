@@ -1,7 +1,6 @@
 //  actually useage of context in this small demo isn't necessary this is
 // only for demenstration purposes
 import { createContext, useContext, useState } from "react";
-import React from "react";
 import { UserStatusContextType, UserStatusType } from "../types/types";
 
 const UserStatusContext = createContext<UserStatusContextType>({

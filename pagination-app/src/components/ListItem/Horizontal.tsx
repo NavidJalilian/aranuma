@@ -1,12 +1,11 @@
 import {
   Avatar,
-  Box,
+  
   Card,
   CardContent,
   Skeleton,
   Typography,
 } from "@mui/material";
-import React from "react";
 import { UserDataType, UserStatusType } from "../../types/types";
 import { Stack } from "@mui/system";
 import { useUserStatusContext } from "../../contexts/UserStatusContext";

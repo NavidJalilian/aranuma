@@ -1,4 +1,3 @@
-import React from "react";
 import { UserDataType, ListType } from "../../types/types";
 import "./list.css";
 export default function List(props: ListType) {
