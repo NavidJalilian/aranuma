@@ -1,25 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
-  Box,
   FormControl,
-  FormControlLabel,
   InputLabel,
   MenuItem,
   Pagination,
   Radio,
-  Select,
+  FormControlLabel,
+  SvgIcon,
   SelectChangeEvent,
   Stack,
-  SvgIcon,
+  Select,
+  Typography,
 } from "@mui/material";
+// @ts-ignore
+
 import UsersList from "../components/Lists/Controled";
-import VerticalListItem from "../components/ListItem/Vertical";
-import HorizontalListItem from "../components/ListItem/Horizontal";
 import {
-  PerferedLayoutType,
   UserDataType,
   UserStatusType,
+  PerferedLayoutType,
 } from "../types/types";
+
+import { Box } from "@mui/system";
+import VerticalListItem from "../components/ListItem/Vertical";
+import HorizontalListItem from "../components/ListItem/Horizontal";
 import MuiRadioGroup from "../components/Mui/RadioGroup";
 import { useUserStatusContext } from "../contexts/UserStatusContext";
 
@@ -32,6 +36,7 @@ export default function PaginationPage() {
     PerferedLayoutType.HORIZONTAL
   );
   const { status, setStatus } = useUserStatusContext();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const currentPageHandler = (e: React.ChangeEvent<unknown>, value: number) =>
     setCurrentPage(value);
@@ -40,6 +45,7 @@ export default function PaginationPage() {
     setPerPageCount(+e.target.value);
     setCurrentPage(1);
   };
+
   const perferLayoutHandler = (e: SelectChangeEvent) => {
     const value = e.target.value as PerferedLayoutType;
 
@@ -53,7 +59,6 @@ export default function PaginationPage() {
       setStatus(UserStatusType.LOADING);
       const response = await fetch(url, { signal: controller.signal });
       if (response.ok) setStatus(UserStatusType.SUCCESS);
-
       const data = await response.json();
       setTotalPages(data.total_pages);
       setUsersData(data.data);
@@ -62,6 +67,7 @@ export default function PaginationPage() {
       if (e.name === "AbortError") return;
       else {
         setStatus(UserStatusType.ERROR);
+        setErrorMessage(e.message);
       }
     }
   };
@@ -78,6 +84,17 @@ export default function PaginationPage() {
 
   return (
     <>
+      {status === UserStatusType.ERROR && (
+        <>
+          <Typography variant="h6" color="red" sx={{ textAlign: "center" }}>
+            Something went worng sorry!
+          </Typography>
+          <Typography variant="h6" color="red" sx={{ textAlign: "center" }}>
+            {errorMessage}
+          </Typography>
+        </>
+      )}
+
       {perferedLayout === PerferedLayoutType.VERRTICAL &&
       status !== UserStatusType.ERROR ? (
         <UsersList
@@ -110,7 +127,6 @@ export default function PaginationPage() {
           page={currentPage}
         />
       </Stack>
-
       <Stack
         mt={3}
         direction="row"
@@ -193,8 +209,8 @@ export default function PaginationPage() {
                   height: 20,
                   translate: "1% 105% ",
                 }}
-              >
-                {/* horizontal svg */}
+              > 
+              {/* horizontal svg */}
                 <svg
                   width="450"
                   height="450"
