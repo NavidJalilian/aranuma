@@ -13,8 +13,13 @@ import {
   SvgIcon,
 } from "@mui/material";
 
-import { PerferedLayoutType, UserDataType } from "../types/types";
+import {
+  PerferedLayoutType,
+  UserDataType,
+  UserStatusType,
+} from "../types/types";
 import MuiRadioGroup from "../components/Mui/RadioGroup";
+import { useUserStatusContext } from "../contexts/UserStatusContext";
 
 export default function PaginationPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -24,8 +29,7 @@ export default function PaginationPage() {
   const [perferedLayout, setPerferedLayout] = useState<PerferedLayoutType>(
     PerferedLayoutType.HORIZONTAL
   );
-
-  const [errorMessage, setErrorMessage] = useState("");
+  const { status, setStatus } = useUserStatusContext();
 
   const currentPageHandler = (e: React.ChangeEvent<unknown>, value: number) =>
     setCurrentPage(value);
@@ -44,7 +48,10 @@ export default function PaginationPage() {
 
   const getUsersData = async (controller: AbortController) => {
     try {
+      setStatus(UserStatusType.LOADING);
       const response = await fetch(url, { signal: controller.signal });
+      if (response.ok) setStatus(UserStatusType.SUCCESS);
+
       const data = await response.json();
       setTotalPages(data.total_pages);
       setUsersData(data.data);
@@ -52,7 +59,7 @@ export default function PaginationPage() {
       if (!(e instanceof Error)) return;
       if (e.name === "AbortError") return;
       else {
-        setErrorMessage(e.message);
+        setStatus(UserStatusType.ERROR);
       }
     }
   };
@@ -82,7 +89,7 @@ export default function PaginationPage() {
           page={currentPage}
         />
       </Stack>
-    
+
       <Stack
         mt={3}
         direction="row"
