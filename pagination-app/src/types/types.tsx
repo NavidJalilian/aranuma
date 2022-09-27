@@ -1,3 +1,4 @@
+import { SelectChangeEvent } from "@mui/material";
 export type UserDataType = {
   avatar?: string;
   email?: string;
@@ -6,10 +7,24 @@ export type UserDataType = {
   last_name?: string;
 };
 
-
-export type ListType = {
+export enum UserStatusType {
+  LOADING = "loading",
+  ERROR = "error",
+  SUCCESS = "success",
+}
+export type UserListType = {
   data: UserDataType[];
   listItem: React.FunctionComponent<UserDataType>;
   step: number;
   perPageCount: number;
+};
+
+export enum PerferedLayoutType {
+  VERRTICAL = "vertical",
+  HORIZONTAL = "horizontal",
+}
+
+export type UserStatusContextType = {
+  status: UserStatusType;
+  setStatus: React.Dispatch<React.SetStateAction<UserStatusType>>;
 };
