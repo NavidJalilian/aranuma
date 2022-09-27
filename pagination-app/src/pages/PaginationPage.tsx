@@ -12,16 +12,15 @@ import {
   Select,
   Typography,
 } from "@mui/material";
-// @ts-ignore
+import { Box } from "@mui/system";
 
-import ControledList from "../components/Lists/Controled";
 import {
   UserDataType,
   UserStatusType,
   PerferedLayoutType,
 } from "../types/types";
 
-import { Box } from "@mui/system";
+import ControledList from "../components/Lists/Controled";
 import VerticalListItem from "../components/ListItem/Vertical";
 import HorizontalListItem from "../components/ListItem/Horizontal";
 import MuiRadioGroup from "../components/Mui/RadioGroup";
@@ -126,7 +125,8 @@ export default function PaginationPage() {
           count={totalPages}
           page={currentPage}
         />
-      </Stack>
+      </Stack> 
+
       <Stack
         mt={3}
         direction="row"
@@ -198,6 +198,7 @@ export default function PaginationPage() {
               </SvgIcon>
             }
           />
+
           <FormControlLabel
             value={PerferedLayoutType.HORIZONTAL}
             control={<Radio />}
@@ -243,6 +244,7 @@ export default function PaginationPage() {
               </SvgIcon>
             }
           />
+          
         </MuiRadioGroup>
       </Stack>
     </>

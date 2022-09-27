@@ -1,6 +1,7 @@
-import { UserDataType, ListType } from "../../types/types";
+import { UserDataType, UsersListType } from "../../types/types";
 import "./list.css";
-export default function List(props: ListType) {
+
+export default function List(props: UsersListType) {
   let { data, listItem: ListItem, step, perPageCount = 12 } = props;
   return (
     <ul className="flex">
@@ -12,14 +13,13 @@ export default function List(props: ListType) {
               return <ListItem key={user.id} {...user}></ListItem>;
             }
           })
-        : Array(perPageCount)
+        : Array(perPageCount) //for loading state
             .fill(1)
             .map((_, idx: number) => {
               while (step > 0) {
                 step--;
                 return <ListItem key={idx}></ListItem>;
               }
-              return;
             })}
     </ul>
   );

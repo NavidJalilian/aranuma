@@ -5,7 +5,7 @@ import { UserStatusContextType, UserStatusType } from "../types/types";
 
 const UserStatusContext = createContext<UserStatusContextType>({
   status: UserStatusType.LOADING,
-  setStatus: (status) => UserStatusType.SUCCESS,
+  setStatus: () => UserStatusType.SUCCESS,
 });
 
 type propsType = {
