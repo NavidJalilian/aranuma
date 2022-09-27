@@ -6,3 +6,10 @@ export type UserDataType = {
   last_name?: string;
 };
 
+
+export type ListType = {
+  data: UserDataType[];
+  listItem: React.FunctionComponent<UserDataType>;
+  step: number;
+  perPageCount: number;
+};
