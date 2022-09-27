@@ -12,7 +12,9 @@ import {
   Stack,
   SvgIcon,
 } from "@mui/material";
-
+import UsersList from "../components/Lists/Controled";
+import VerticalListItem from "../components/ListItem/Vertical";
+import HorizontalListItem from "../components/ListItem/Horizontal";
 import {
   PerferedLayoutType,
   UserDataType,
@@ -76,6 +78,25 @@ export default function PaginationPage() {
 
   return (
     <>
+      {perferedLayout === PerferedLayoutType.VERRTICAL &&
+      status !== UserStatusType.ERROR ? (
+        <UsersList
+          data={usersData}
+          step={perPageCount}
+          listItem={VerticalListItem}
+          perPageCount={perPageCount}
+        />
+      ) : (
+        status !== UserStatusType.ERROR && (
+          <UsersList
+            data={usersData}
+            step={perPageCount}
+            perPageCount={perPageCount}
+            listItem={HorizontalListItem}
+          />
+        )
+      )}
+
       <Stack
         mt={3}
         direction="row"
