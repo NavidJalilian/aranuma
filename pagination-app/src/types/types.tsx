@@ -12,7 +12,7 @@ export enum UserStatusType {
   ERROR = "error",
   SUCCESS = "success",
 }
-export type UserListType = {
+export type ListType = {
   data: UserDataType[];
   listItem: React.FunctionComponent<UserDataType>;
   step: number;
@@ -27,4 +27,10 @@ export enum PerferedLayoutType {
 export type UserStatusContextType = {
   status: UserStatusType;
   setStatus: React.Dispatch<React.SetStateAction<UserStatusType>>;
+};
+export type MuiRadioGroupType = {
+  label: string;
+  value: PerferedLayoutType;
+  changeHandler: (e: SelectChangeEvent) => void;
+  children: React.ReactNode;
 };
