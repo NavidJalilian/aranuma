@@ -141,7 +141,7 @@ export default function PaginationPage() {
               id="pageStep-select"
               value={perPageCount.toString()}
               label="Count"
-              sx={{ width: "200px" }}
+              sx={{ width: { sx: "100px", sm: "200px" } }}
               onChange={pageStepHandler}
             >
               <MenuItem value={1}>One</MenuItem>
@@ -209,8 +209,8 @@ export default function PaginationPage() {
                   height: 20,
                   translate: "1% 105% ",
                 }}
-              > 
-              {/* horizontal svg */}
+              >
+                {/* horizontal svg */}
                 <svg
                   width="450"
                   height="450"
