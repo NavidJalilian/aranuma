@@ -5,7 +5,7 @@ export default function List(props: ListType) {
   let { data, listItem: ListItem, step, perPageCount = 12 } = props;
   return (
     <ul className="flex">
-      {data
+      {data.length > 0
         ? data.map((user: UserDataType) => {
             console.log(user);
             while (step > 0) {
