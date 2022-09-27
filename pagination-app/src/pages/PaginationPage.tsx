@@ -45,7 +45,7 @@ export default function PaginationPage() {
     setCurrentPage(1);
   };
 
-  const perferLayoutHandler = (e: SelectChangeEvent) => {
+  const perferedLayoutHandler = (e: SelectChangeEvent) => {
     const value = e.target.value as PerferedLayoutType;
 
     setPerferedLayout(value);
@@ -155,7 +155,7 @@ export default function PaginationPage() {
         <MuiRadioGroup
           label="Layout"
           value={perferedLayout}
-          changeHandler={perferLayoutHandler}
+          changeHandler={perferedLayoutHandler}
         >
           <FormControlLabel
             value={PerferedLayoutType.VERRTICAL}
@@ -244,7 +244,7 @@ export default function PaginationPage() {
               </SvgIcon>
             }
           />
-          
+
         </MuiRadioGroup>
       </Stack>
     </>
