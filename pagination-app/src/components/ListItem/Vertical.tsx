@@ -1,7 +1,8 @@
-import { Avatar, Card, CardContent, Typography } from "@mui/material";
+import { Avatar, Card, CardContent, Skeleton, Typography } from "@mui/material";
 import React from "react";
-import { UserDataType } from "../../types/types";
+import { UserDataType, UserStatusType } from "../../types/types";
 import { Stack } from "@mui/system";
+import { useUserStatusContext } from "../../contexts/UserStatusContext";
 import "./ListItem.css";
 
 export default function VerticalListItem({
@@ -10,6 +11,7 @@ export default function VerticalListItem({
   first_name = "",
   last_name = "",
 }: UserDataType) {
+  const { status } = useUserStatusContext();
   return (
     <Card
       className="fixed-flex-baises"
@@ -21,15 +23,30 @@ export default function VerticalListItem({
         justifyContent="space-around"
         alignItems="center"
       >
-        <Avatar src={avatar} alt={first_name + " " + last_name} />
+        {status === UserStatusType.LOADING ? (
+          <Skeleton variant="circular" animation="wave">
+            <Avatar />
+          </Skeleton>
+        ) : (
+          <Avatar src={avatar} alt={first_name + " " + last_name} />
+        )}
       </Stack>
       <CardContent>
-        <Typography gutterBottom variant="subtitle1" fontWeight={"bold"}>
-          {first_name + " " + last_name}
-        </Typography>
-        <Typography color="text.secondary" variant="subtitle2">
-          {email}
-        </Typography>
+        {status === UserStatusType.LOADING ? (
+          <Stack justifyContent={"center"} alignItems="center">
+            <Skeleton animation="wave" height={28} width={80} />
+            <Skeleton animation="wave" height={28} width={180} />
+          </Stack>
+        ) : (
+          <>
+            <Typography gutterBottom variant="subtitle1" fontWeight={"bold"}>
+              {first_name + " " + last_name}
+            </Typography>
+            <Typography color="text.secondary" variant="subtitle2">
+              {email}
+            </Typography>
+          </>
+        )}
       </CardContent>
     </Card>
   );
