@@ -1,23 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { Pagination, Stack } from "@mui/material";
-
 import {
-  UserDataType,
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Pagination,
+  Select,
+  SelectChangeEvent,
+  Stack,
+} from "@mui/material";
 
-} from "../types/types";
-
+import { UserDataType } from "../types/types";
 
 export default function PaginationPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [usersData, setUsersData] = useState<UserDataType[]>([]);
   const [perPageCount, setPerPageCount] = useState(3);
   const [totalPages, setTotalPages] = useState(2);
- 
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const currentPageHandler = (e: React.ChangeEvent<unknown>, value: number) =>
     setCurrentPage(value);
 
+  const pageStepHandler = (e: SelectChangeEvent) => {
+    setPerPageCount(+e.target.value);
+    setCurrentPage(1);
+  };
 
   const url = `https://reqres.in/api/users?page=${currentPage}&per_page=${perPageCount}`;
 
@@ -61,6 +70,24 @@ export default function PaginationPage() {
           page={currentPage}
         />
       </Stack>
+      <Box sx={{ padding: "0.5em" }}>
+        <FormControl>
+          <InputLabel id="pageStep">Count</InputLabel>
+          <Select
+            labelId="pageStep"
+            id="pageStep-select"
+            value={perPageCount.toString()}
+            label="Count"
+            sx={{ width: "200px" }}
+            onChange={pageStepHandler}
+          >
+            <MenuItem value={1}>One</MenuItem>
+            <MenuItem value={3}>Three</MenuItem>
+            <MenuItem value={6}>Six</MenuItem>
+            <MenuItem value={12}>Twelve</MenuItem>
+          </Select>
+        </FormControl>
+      </Box>
     </>
   );
 }
