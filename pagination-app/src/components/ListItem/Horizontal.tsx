@@ -1,6 +1,5 @@
 import {
   Avatar,
-  
   Card,
   CardContent,
   Skeleton,
@@ -17,7 +16,9 @@ export default function HorizontalListItem({
   first_name = "",
   last_name = "",
 }: UserDataType) {
+
   const { status } = useUserStatusContext();
+
   return (
     <Card
       className="fixed-flex-baises"
@@ -29,6 +30,7 @@ export default function HorizontalListItem({
         justifyContent="space-around"
         alignItems="center"
       >
+
         {status === UserStatusType.LOADING ? (
           <Skeleton variant="circular" animation="wave">
             <Avatar />
@@ -38,6 +40,7 @@ export default function HorizontalListItem({
         )}
 
         <CardContent>
+
           {status === UserStatusType.LOADING ? (
             <>
               <Skeleton animation="wave" height={28} width={80} />
@@ -53,6 +56,7 @@ export default function HorizontalListItem({
               </Typography>
             </>
           )}
+          
         </CardContent>
       </Stack>
     </Card>

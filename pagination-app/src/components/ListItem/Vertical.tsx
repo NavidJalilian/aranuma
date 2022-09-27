@@ -12,6 +12,7 @@ export default function VerticalListItem({
   last_name = "",
 }: UserDataType) {
   const { status } = useUserStatusContext();
+
   return (
     <Card
       className="fixed-flex-baises"
@@ -23,6 +24,7 @@ export default function VerticalListItem({
         justifyContent="space-around"
         alignItems="center"
       >
+
         {status === UserStatusType.LOADING ? (
           <Skeleton variant="circular" animation="wave">
             <Avatar />
@@ -30,8 +32,10 @@ export default function VerticalListItem({
         ) : (
           <Avatar src={avatar} alt={first_name + " " + last_name} />
         )}
+
       </Stack>
       <CardContent>
+
         {status === UserStatusType.LOADING ? (
           <Stack justifyContent={"center"} alignItems="center">
             <Skeleton animation="wave" height={28} width={80} />
@@ -47,6 +51,7 @@ export default function VerticalListItem({
             </Typography>
           </>
         )}
+        
       </CardContent>
     </Card>
   );

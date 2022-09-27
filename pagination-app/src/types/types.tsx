@@ -1,4 +1,5 @@
 import { SelectChangeEvent } from "@mui/material";
+
 export type UserDataType = {
   avatar?: string;
   email?: string;
@@ -12,7 +13,12 @@ export enum UserStatusType {
   ERROR = "error",
   SUCCESS = "success",
 }
-export type ListType = {
+export type UserStatusContextType = {
+  status: UserStatusType;
+  setStatus: React.Dispatch<React.SetStateAction<UserStatusType>>;
+};
+
+export type UsersListType = {
   data: UserDataType[];
   listItem: React.FunctionComponent<UserDataType>;
   step: number;
@@ -23,11 +29,6 @@ export enum PerferedLayoutType {
   VERRTICAL = "vertical",
   HORIZONTAL = "horizontal",
 }
-
-export type UserStatusContextType = {
-  status: UserStatusType;
-  setStatus: React.Dispatch<React.SetStateAction<UserStatusType>>;
-};
 export type MuiRadioGroupType = {
   label: string;
   value: PerferedLayoutType;
