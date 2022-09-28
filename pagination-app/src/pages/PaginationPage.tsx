@@ -57,10 +57,10 @@ export default function PaginationPage() {
     try {
       setStatus(UserStatusType.LOADING);
       const response = await fetch(url, { signal: controller.signal });
-      if (response.ok) setStatus(UserStatusType.SUCCESS);
       const data = await response.json();
       setTotalPages(data.total_pages);
       setUsersData(data.data);
+      if (response.ok) setStatus(UserStatusType.SUCCESS);
     } catch (e) {
       if (!(e instanceof Error)) return;
       if (e.name === "AbortError") return;
