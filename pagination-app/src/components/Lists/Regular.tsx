@@ -1,7 +1,7 @@
-import { UserDataType, RegularListType } from "../../types/types";
+import { UserDataType, UsersListType } from "../../types/types";
 import "./Regular.css";
 
-export default function Regular(props: RegularListType) {
+export default function RegularList(props: UsersListType) {
   const { data, listItem: ListItem } = props;
   return (
     <ul className="flex">
