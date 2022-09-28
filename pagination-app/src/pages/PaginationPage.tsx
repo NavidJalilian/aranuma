@@ -21,6 +21,7 @@ import {
 } from "../types/types";
 
 import RegularList from "../components/Lists/Regular";
+import SkeletonList from "../components/Lists/Skeleton";
 import VerticalListItem from "../components/ListItem/Vertical";
 import HorizontalListItem from "../components/ListItem/Horizontal";
 import MuiRadioGroup from "../components/Mui/RadioGroup";
@@ -95,19 +96,22 @@ export default function PaginationPage() {
       )}
 
       {perferedLayout === PerferedLayoutType.VERRTICAL &&
-      status !== UserStatusType.ERROR ? (
-        <RegularList
-          data={usersData}
-          listItem={VerticalListItem}
-          perPageCount={perPageCount}
-        />
+      status === UserStatusType.SUCCESS ? (
+        <RegularList data={usersData} listItem={VerticalListItem} />
       ) : (
-        status !== UserStatusType.ERROR && (
-          <RegularList
-            data={usersData}
-            perPageCount={perPageCount}
-            listItem={HorizontalListItem}
-          />
+        status === UserStatusType.LOADING &&
+        perferedLayout === PerferedLayoutType.VERRTICAL && (
+          <SkeletonList listSize={perPageCount} listItem={VerticalListItem} />
+        )
+      )}
+
+      {perferedLayout === PerferedLayoutType.HORIZONTAL &&
+      status === UserStatusType.SUCCESS ? (
+        <RegularList data={usersData} listItem={HorizontalListItem} />
+      ) : (
+        status === UserStatusType.LOADING &&
+        perferedLayout === PerferedLayoutType.HORIZONTAL && (
+          <SkeletonList listSize={perPageCount} listItem={HorizontalListItem} />
         )
       )}
 
@@ -247,3 +251,4 @@ export default function PaginationPage() {
     </>
   );
 }
+// h |v => suc|err|load || 2list
