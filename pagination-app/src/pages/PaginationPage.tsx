@@ -20,7 +20,7 @@ import {
   PerferedLayoutType,
 } from "../types/types";
 
-import ControledList from "../components/Lists/Controled";
+import ControledList from "../components/Lists/Regular";
 import VerticalListItem from "../components/ListItem/Vertical";
 import HorizontalListItem from "../components/ListItem/Horizontal";
 import MuiRadioGroup from "../components/Mui/RadioGroup";

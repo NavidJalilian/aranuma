@@ -1,0 +1,10 @@
+ul {
+  padding: 0;
+}
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1em;
+}

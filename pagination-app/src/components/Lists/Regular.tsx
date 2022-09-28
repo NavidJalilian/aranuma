@@ -1,5 +1,5 @@
 import { UserDataType, UsersListType } from "../../types/types";
-import "./list.css";
+import "./Regular.css";
 
 export default function List(props: UsersListType) {
   const { data, listItem: ListItem, perPageCount = 12 } = props;
