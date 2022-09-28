@@ -6,7 +6,7 @@ export default function SkeletonList(props: SkeletonListType) {
   return (
     <ul className="flex">
       {Array(listSize)
-        .fill(1)
+        .fill(null)
         .map((_, idx) => (
           <ListItem key={idx}></ListItem>
         ))}
