@@ -20,7 +20,7 @@ import {
   PerferedLayoutType,
 } from "../types/types";
 
-import ControledList from "../components/Lists/Regular";
+import RegularList from "../components/Lists/Regular";
 import VerticalListItem from "../components/ListItem/Vertical";
 import HorizontalListItem from "../components/ListItem/Horizontal";
 import MuiRadioGroup from "../components/Mui/RadioGroup";
@@ -96,14 +96,14 @@ export default function PaginationPage() {
 
       {perferedLayout === PerferedLayoutType.VERRTICAL &&
       status !== UserStatusType.ERROR ? (
-        <ControledList
+        <RegularList
           data={usersData}
           listItem={VerticalListItem}
           perPageCount={perPageCount}
         />
       ) : (
         status !== UserStatusType.ERROR && (
-          <ControledList
+          <RegularList
             data={usersData}
             perPageCount={perPageCount}
             listItem={HorizontalListItem}
