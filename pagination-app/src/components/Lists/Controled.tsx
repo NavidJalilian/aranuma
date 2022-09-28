@@ -2,7 +2,7 @@ import { UserDataType, UsersListType } from "../../types/types";
 import "./list.css";
 
 export default function List(props: UsersListType) {
-  let { data, listItem: ListItem, perPageCount = 12 } = props;
+  const { data, listItem: ListItem, perPageCount = 12 } = props;
   return (
     <ul className="flex">
       {data.length > 0
