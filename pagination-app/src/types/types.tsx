@@ -18,9 +18,13 @@ export type UserStatusContextType = {
   setStatus: React.Dispatch<React.SetStateAction<UserStatusType>>;
 };
 
-export type RegularListType = {
+export type UsersListType = {
   data: UserDataType[];
   listItem: React.FunctionComponent<UserDataType>;
+};
+export type SkeletonListType = {
+  listItem: React.FunctionComponent;
+  listSize: number;
 };
 
 export enum PerferedLayoutType {
