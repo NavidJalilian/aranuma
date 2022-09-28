@@ -21,7 +21,7 @@ export type UserStatusContextType = {
 export type UsersListType = {
   data: UserDataType[];
   listItem: React.FunctionComponent<UserDataType>;
-  step: number;
+
   perPageCount: number;
 };
 

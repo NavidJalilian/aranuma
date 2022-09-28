@@ -98,7 +98,6 @@ export default function PaginationPage() {
       status !== UserStatusType.ERROR ? (
         <ControledList
           data={usersData}
-          step={perPageCount}
           listItem={VerticalListItem}
           perPageCount={perPageCount}
         />
@@ -106,7 +105,6 @@ export default function PaginationPage() {
         status !== UserStatusType.ERROR && (
           <ControledList
             data={usersData}
-            step={perPageCount}
             perPageCount={perPageCount}
             listItem={HorizontalListItem}
           />
@@ -125,7 +123,7 @@ export default function PaginationPage() {
           count={totalPages}
           page={currentPage}
         />
-      </Stack> 
+      </Stack>
 
       <Stack
         mt={3}
@@ -244,7 +242,6 @@ export default function PaginationPage() {
               </SvgIcon>
             }
           />
-
         </MuiRadioGroup>
       </Stack>
     </>
