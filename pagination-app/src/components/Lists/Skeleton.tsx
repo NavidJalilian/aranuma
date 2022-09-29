@@ -1,5 +1,5 @@
 import { SkeletonListType } from "../../types/types";
-import "./Regular.css";
+import "./List.css";
 
 export default function SkeletonList(props: SkeletonListType) {
   const { listSize, listItem: ListItem } = props;

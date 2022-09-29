@@ -1,5 +1,5 @@
 import { UserDataType, UsersListType } from "../../types/types";
-import "./Regular.css";
+import "./List.css";
 
 export default function RegularList(props: UsersListType) {
   const { data, listItem: ListItem } = props;
