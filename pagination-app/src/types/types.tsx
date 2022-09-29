@@ -7,7 +7,13 @@ export type UserDataType = {
   id?: number;
   last_name?: string;
 };
-
+export type FetchedUsersDataType = {
+  data: UserDataType[];
+  page: number;
+  per_page: number;
+  total: number;
+  total_pages: number;
+};
 export enum UserStatusType {
   LOADING = "loading",
   ERROR = "error",

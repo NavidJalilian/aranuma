@@ -18,6 +18,7 @@ import {
   UserDataType,
   UserStatusType,
   PerferedLayoutType,
+  FetchedUsersDataType,
 } from "../types/types";
 
 import RegularList from "../components/Lists/Regular";
@@ -58,7 +59,7 @@ export default function PaginationPage() {
     try {
       setStatus(UserStatusType.LOADING);
       const response = await fetch(url, { signal: controller.signal });
-      const data = await response.json();
+      const data: FetchedUsersDataType = await response.json();
       setTotalPages(data.total_pages);
       setUsersData(data.data);
       if (response.ok) setStatus(UserStatusType.SUCCESS);
@@ -251,4 +252,3 @@ export default function PaginationPage() {
     </>
   );
 }
-
